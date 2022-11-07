@@ -15,6 +15,9 @@ public class FlightService {
     @SneakyThrows
     private String performBooking(String destination) {
         log.infof("[%s] Start booking...", destination);
+        if ("Moscow".equals(destination)) {
+            throw new IllegalStateException("Cannot book flight to Russia!");
+        }
         TimeUnit.SECONDS.sleep(3);
         log.infof("[%s] Booking finished!", destination);
         return "Booked flight to " + destination;
